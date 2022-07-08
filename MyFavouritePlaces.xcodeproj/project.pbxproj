@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		17965DD72878754C0083F8DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DD62878754C0083F8DC /* AppDelegate.swift */; };
 		17965DD92878754C0083F8DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DD82878754C0083F8DC /* SceneDelegate.swift */; };
-		17965DDB2878754C0083F8DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DDA2878754C0083F8DC /* ViewController.swift */; };
+		17965DDB2878754C0083F8DC /* MainListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DDA2878754C0083F8DC /* MainListVC.swift */; };
 		17965DDE2878754C0083F8DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17965DDC2878754C0083F8DC /* Main.storyboard */; };
 		17965DE02878754D0083F8DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17965DDF2878754D0083F8DC /* Assets.xcassets */; };
 		17965DE32878754D0083F8DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17965DE12878754D0083F8DC /* LaunchScreen.storyboard */; };
+		17965DEB28787A450083F8DC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DEA28787A450083F8DC /* Constants.swift */; };
+		17965DED28787B130083F8DC /* MainListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DEC28787B130083F8DC /* MainListCell.swift */; };
+		17965DF3287880C60083F8DC /* MyPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DF2287880C60083F8DC /* MyPlaceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		17965DD32878754C0083F8DC /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17965DD32878754C0083F8DC /* MyFavouritePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFavouritePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17965DD62878754C0083F8DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17965DD82878754C0083F8DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		17965DDA2878754C0083F8DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		17965DDA2878754C0083F8DC /* MainListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListVC.swift; sourceTree = "<group>"; };
 		17965DDD2878754C0083F8DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17965DDF2878754D0083F8DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17965DE22878754D0083F8DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17965DE42878754D0083F8DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17965DEA28787A450083F8DC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		17965DEC28787B130083F8DC /* MainListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCell.swift; sourceTree = "<group>"; };
+		17965DF2287880C60083F8DC /* MyPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +54,7 @@
 		17965DD42878754C0083F8DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17965DD32878754C0083F8DC /* MyPlaces.app */,
+				17965DD32878754C0083F8DC /* MyFavouritePlaces.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,7 +64,9 @@
 			children = (
 				17965DD62878754C0083F8DC /* AppDelegate.swift */,
 				17965DD82878754C0083F8DC /* SceneDelegate.swift */,
-				17965DDA2878754C0083F8DC /* ViewController.swift */,
+				17965DF12878809F0083F8DC /* Models */,
+				17965DF02878808D0083F8DC /* Helpers */,
+				17965DEE287880720083F8DC /* Controllers */,
 				17965DDC2878754C0083F8DC /* Main.storyboard */,
 				17965DDF2878754D0083F8DC /* Assets.xcassets */,
 				17965DE12878754D0083F8DC /* LaunchScreen.storyboard */,
@@ -67,12 +75,45 @@
 			path = MyPlaces;
 			sourceTree = "<group>";
 		};
+		17965DEE287880720083F8DC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				17965DDA2878754C0083F8DC /* MainListVC.swift */,
+				17965DEF2878807C0083F8DC /* Cells */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		17965DEF2878807C0083F8DC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				17965DEC28787B130083F8DC /* MainListCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		17965DF02878808D0083F8DC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				17965DEA28787A450083F8DC /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		17965DF12878809F0083F8DC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				17965DF2287880C60083F8DC /* MyPlaceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17965DD22878754C0083F8DC /* MyPlaces */ = {
+		17965DD22878754C0083F8DC /* MyFavouritePlaces */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17965DE72878754D0083F8DC /* Build configuration list for PBXNativeTarget "MyPlaces" */;
+			buildConfigurationList = 17965DE72878754D0083F8DC /* Build configuration list for PBXNativeTarget "MyFavouritePlaces" */;
 			buildPhases = (
 				17965DCF2878754C0083F8DC /* Sources */,
 				17965DD02878754C0083F8DC /* Frameworks */,
@@ -82,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = MyPlaces;
+			name = MyFavouritePlaces;
 			productName = MyPlaces;
-			productReference = 17965DD32878754C0083F8DC /* MyPlaces.app */;
+			productReference = 17965DD32878754C0083F8DC /* MyFavouritePlaces.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 17965DCE2878754C0083F8DC /* Build configuration list for PBXProject "MyPlaces" */;
+			buildConfigurationList = 17965DCE2878754C0083F8DC /* Build configuration list for PBXProject "MyFavouritePlaces" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17965DD22878754C0083F8DC /* MyPlaces */,
+				17965DD22878754C0083F8DC /* MyFavouritePlaces */,
 			);
 		};
 /* End PBXProject section */
@@ -138,9 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17965DDB2878754C0083F8DC /* ViewController.swift in Sources */,
+				17965DDB2878754C0083F8DC /* MainListVC.swift in Sources */,
 				17965DD72878754C0083F8DC /* AppDelegate.swift in Sources */,
 				17965DD92878754C0083F8DC /* SceneDelegate.swift in Sources */,
+				17965DEB28787A450083F8DC /* Constants.swift in Sources */,
+				17965DED28787B130083F8DC /* MainListCell.swift in Sources */,
+				17965DF3287880C60083F8DC /* MyPlaceModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +336,7 @@
 				DEVELOPMENT_TEAM = N5R82RFL53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyFovouritePlaces;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -320,6 +365,7 @@
 				DEVELOPMENT_TEAM = N5R82RFL53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyFovouritePlaces;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -341,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		17965DCE2878754C0083F8DC /* Build configuration list for PBXProject "MyPlaces" */ = {
+		17965DCE2878754C0083F8DC /* Build configuration list for PBXProject "MyFavouritePlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17965DE52878754D0083F8DC /* Debug */,
@@ -350,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17965DE72878754D0083F8DC /* Build configuration list for PBXNativeTarget "MyPlaces" */ = {
+		17965DE72878754D0083F8DC /* Build configuration list for PBXNativeTarget "MyFavouritePlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17965DE82878754D0083F8DC /* Debug */,
