@@ -29,7 +29,6 @@ struct MyPlace {
         for place in placesNames {
             myPlaces.append(MyPlace(name: place, image: place, location: "Wroclaw", comment: "Here nice coffee"))
         }
-        
         return myPlaces
     }
 }

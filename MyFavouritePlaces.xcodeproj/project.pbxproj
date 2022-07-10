@@ -16,6 +16,8 @@
 		17965DEB28787A450083F8DC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DEA28787A450083F8DC /* Constants.swift */; };
 		17965DED28787B130083F8DC /* MainListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DEC28787B130083F8DC /* MainListCell.swift */; };
 		17965DF3287880C60083F8DC /* MyPlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DF2287880C60083F8DC /* MyPlaceModel.swift */; };
+		17965DF7287B2FD00083F8DC /* DetailListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DF6287B2FD00083F8DC /* DetailListVC.swift */; };
+		17965DF9287B45BE0083F8DC /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17965DF8287B45BE0083F8DC /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		17965DEA28787A450083F8DC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		17965DEC28787B130083F8DC /* MainListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCell.swift; sourceTree = "<group>"; };
 		17965DF2287880C60083F8DC /* MyPlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlaceModel.swift; sourceTree = "<group>"; };
+		17965DF6287B2FD00083F8DC /* DetailListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListVC.swift; sourceTree = "<group>"; };
+		17965DF8287B45BE0083F8DC /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				17965DDA2878754C0083F8DC /* MainListVC.swift */,
+				17965DF6287B2FD00083F8DC /* DetailListVC.swift */,
 				17965DEF2878807C0083F8DC /* Cells */,
 			);
 			path = Controllers;
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				17965DEA28787A450083F8DC /* Constants.swift */,
+				17965DF8287B45BE0083F8DC /* Alert.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -185,6 +191,8 @@
 				17965DEB28787A450083F8DC /* Constants.swift in Sources */,
 				17965DED28787B130083F8DC /* MainListCell.swift in Sources */,
 				17965DF3287880C60083F8DC /* MyPlaceModel.swift in Sources */,
+				17965DF9287B45BE0083F8DC /* Alert.swift in Sources */,
+				17965DF7287B2FD00083F8DC /* DetailListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
