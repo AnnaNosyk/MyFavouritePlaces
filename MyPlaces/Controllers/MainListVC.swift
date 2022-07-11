@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainListVC.swift
 //  MyPlaces
 //
 //  Created by Anna Nosyk on 08/07/2022.
@@ -15,18 +15,40 @@ class MainListVC: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var sortingButton: UIBarButtonItem!
     
+    private let constants = Constants()
+    private var myPlaces:  Results<MyPlace>!
     
-    
-    let constants = Constants()
-    var myPlaces:  Results<MyPlace>!
     // for sorting
-    var ascendingSorting = true
+    private var ascendingSorting = true
+    
+    // for search
+    private let searchController = UISearchController(searchResultsController: nil)
+    //items from search
+    private var filteredPlaces: Results<MyPlace>!
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         myPlaces = realm.objects(MyPlace.self)
-       
+        setupSearchBar()
+    }
+    
+    
+    private func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+       // searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     private func sorting() {
@@ -70,7 +92,14 @@ class MainListVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditSegue" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let place = myPlaces[indexPath.row]
+            let place: MyPlace
+            if isFiltering {
+                //items from search
+                place = filteredPlaces[indexPath.row]
+            } else {
+                //all items from data base
+                place = myPlaces[indexPath.row]
+            }
             let detailListVC = segue.destination as! DetailListVC
             detailListVC.currentPlace = place
         }
@@ -85,13 +114,27 @@ class MainListVC: UIViewController {
 
 extension MainListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        //items from search
+        if isFiltering {
+            return filteredPlaces.count
+        }
+        //all items from data base
         return myPlaces.isEmpty ? 0 : myPlaces.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainListCell().cellId, for: indexPath) as! MainListCell
         
-        let listOfPlaces = myPlaces[indexPath.row]
+        var listOfPlaces = MyPlace()
+        
+        if isFiltering {
+            //items from search
+            listOfPlaces = filteredPlaces[indexPath.row]
+        } else {
+            //all items from data base
+            listOfPlaces = myPlaces[indexPath.row]
+        }
         
         cell.nameOfplace.text = listOfPlaces.name
         cell.locationPlace.text = listOfPlaces.location
@@ -121,5 +164,22 @@ extension MainListVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+//MARK: - UISearchResultsUpdating
+extension MainListVC: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    // filtering items by seach
+    private func filterContentForSearchText(_ searchText: String) {
+        
+        //by name or by location
+        filteredPlaces = myPlaces.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
+        
+        tableView.reloadData()
+    }
 }
 
