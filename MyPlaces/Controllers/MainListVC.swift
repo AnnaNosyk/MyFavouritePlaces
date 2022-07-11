@@ -12,10 +12,15 @@ class MainListVC: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var sortingButton: UIBarButtonItem!
+    
     
     
     let constants = Constants()
     var myPlaces:  Results<MyPlace>!
+    // for sorting
+    var ascendingSorting = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +28,36 @@ class MainListVC: UIViewController {
         myPlaces = realm.objects(MyPlace.self)
        
     }
+    
+    private func sorting() {
+        //sorting data by date
+        if segmentedControl.selectedSegmentIndex == 0 {
+            myPlaces = myPlaces.sorted(byKeyPath: "date", ascending: ascendingSorting)
+        } else {
+            //sorting data by name
+            myPlaces = myPlaces.sorted(byKeyPath: "name", ascending: ascendingSorting)
+        }
+        
+        tableView.reloadData()
+    }
+
+    
+    @IBAction func sortingItemsSegment(_ sender: UISegmentedControl) {
+        sorting()
+    }
+    
+    @IBAction func sortItemsAction(_ sender: Any) {
+        ascendingSorting.toggle()
+        
+        if ascendingSorting {
+            sortingButton.image = UIImage(systemName: "arrow.down.square")
+        } else {
+            sortingButton.image = UIImage(systemName: "arrow.up.square")
+        }
+        
+        sorting()
+    }
+    
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         

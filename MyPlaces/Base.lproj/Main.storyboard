@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uyg-Tw-SIk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
                                 <color key="backgroundColor" name="background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainListCell" rowHeight="85" id="Egd-MW-cFn" customClass="MainListCell" customModule="MyFavouritePlaces" customModuleProvider="target">
@@ -99,17 +99,35 @@
                                     <outlet property="delegate" destination="pwa-hV-GOG" id="5IA-Xg-MB5"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fr5-HO-oqj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Date"/>
+                                    <segment title="Name"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortingItemsSegment:" destination="pwa-hV-GOG" eventType="valueChanged" id="fYa-95-DH3"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7FR-km-tZa"/>
                         <color key="backgroundColor" name="background"/>
                         <constraints>
+                            <constraint firstItem="Uyg-Tw-SIk" firstAttribute="top" secondItem="fr5-HO-oqj" secondAttribute="bottom" constant="1" id="3rU-S8-C8N"/>
                             <constraint firstItem="7FR-km-tZa" firstAttribute="trailing" secondItem="Uyg-Tw-SIk" secondAttribute="trailing" id="C32-dp-YPy"/>
+                            <constraint firstItem="fr5-HO-oqj" firstAttribute="leading" secondItem="7FR-km-tZa" secondAttribute="leading" id="CfV-3U-dY7"/>
                             <constraint firstItem="Uyg-Tw-SIk" firstAttribute="leading" secondItem="7FR-km-tZa" secondAttribute="leading" id="Eir-A2-uFZ"/>
-                            <constraint firstItem="Uyg-Tw-SIk" firstAttribute="top" secondItem="7FR-km-tZa" secondAttribute="top" id="FGq-Mh-ngj"/>
+                            <constraint firstItem="fr5-HO-oqj" firstAttribute="top" secondItem="7FR-km-tZa" secondAttribute="top" id="WdR-pt-H9G"/>
+                            <constraint firstItem="fr5-HO-oqj" firstAttribute="trailing" secondItem="7FR-km-tZa" secondAttribute="trailing" id="gVI-8O-cbb"/>
                             <constraint firstItem="7FR-km-tZa" firstAttribute="bottom" secondItem="Uyg-Tw-SIk" secondAttribute="bottom" id="jy0-N6-QQd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My favourite places" id="Pd4-i7-ZVa">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.down.square" catalog="system" style="done" id="4VR-2P-SVX">
+                            <connections>
+                                <action selector="sortItemsAction:" destination="pwa-hV-GOG" id="7h4-cN-09S"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="rRS-Xn-Jr0">
                             <connections>
                                 <segue destination="w8a-xU-6dE" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="hkN-Xx-VdX"/>
@@ -117,12 +135,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="fr5-HO-oqj" id="wwb-uX-bvn"/>
+                        <outlet property="sortingButton" destination="4VR-2P-SVX" id="AZC-v3-QZ3"/>
                         <outlet property="tableView" destination="Uyg-Tw-SIk" id="vwt-ER-kAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7c2-gJ-KkV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="93" y="209"/>
+            <point key="canvasLocation" x="92.753623188405811" y="208.92857142857142"/>
         </scene>
         <!--My new place-->
         <scene sceneID="TVz-eB-q4c">
@@ -327,6 +347,7 @@
         <segue reference="ith-rb-ELn"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrow.down.square" catalog="system" width="128" height="114"/>
         <image name="pencil.tip.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <namedColor name="background">
             <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
