@@ -18,6 +18,8 @@ class DetailListVC: UITableViewController {
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    var currentPlace: MyPlace?
+    var imageIsChanged = false
     let alert = Alert()
 
     override func viewDidLoad() {
@@ -25,10 +27,69 @@ class DetailListVC: UITableViewController {
         nameTextField.delegate = self
         locationTextField.delegate = self
         commentTextField.delegate = self
+        saveButton.isEnabled = false
+        
+        nameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        editPlace()
 
     }
     
-    // MARK:-  Table view delegate
+    // edit navigation bar
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
+    }
+
+    
+    // saving places
+    func saveItem() {
+        var image: UIImage?
+        if imageIsChanged {
+            image = imageOfItem.image
+        } else {
+            image = UIImage(systemName: "building.2.crop.circle")
+        }
+        let imageData = image?.pngData()
+        
+        let newPlace = MyPlace(name: nameTextField.text!, location: locationTextField.text, comment: commentTextField.text, imageData: imageData)
+        
+        //edit place
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.comment = newPlace.comment
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            //save new place
+            StorageManager.saveObject(newPlace)
+        }
+        
+    }
+        
+    //for editing items
+    private func editPlace() {
+        if currentPlace != nil {
+            setupNavigationBar()
+            imageIsChanged = true
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+            
+            imageOfItem.image = image
+            imageOfItem.contentMode = .scaleAspectFill
+            nameTextField.text = currentPlace?.name
+            locationTextField.text = currentPlace?.location
+            commentTextField.text = currentPlace?.comment
+        }
+    }
+    
+    
+// MARK:-  Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //hide keyboard when tap on the screen, exept 0 row
@@ -43,16 +104,28 @@ class DetailListVC: UITableViewController {
             view.endEditing(true)
         }
     }
-
+    
+    // go to main list
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
-// MARK:- UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 extension DetailListVC: UITextFieldDelegate {
     
     //hide keyboard on return button
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @objc private func textFieldChanged() {
+        if nameTextField.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
     }
 
 }
@@ -78,6 +151,7 @@ extension DetailListVC: UIImagePickerControllerDelegate, UINavigationControllerD
         imageOfItem.image = info[.editedImage] as? UIImage
         imageOfItem.contentMode = .scaleAspectFill
         imageOfItem.clipsToBounds = true
+        imageIsChanged = true
         dismiss(animated: true)
     }
 }
