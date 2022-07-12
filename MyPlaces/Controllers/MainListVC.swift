@@ -15,6 +15,7 @@ class MainListVC: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var sortingButton: UIBarButtonItem!
     
+    
     private let constants = Constants()
     private var myPlaces:  Results<MyPlace>!
     
@@ -23,12 +24,14 @@ class MainListVC: UIViewController {
     
     // for search
     private let searchController = UISearchController(searchResultsController: nil)
-    //items from search
+    
+    // items from search
     private var filteredPlaces: Results<MyPlace>!
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
     }
+    
     private var isFiltering: Bool {
         return searchController.isActive && !searchBarIsEmpty
     }
@@ -37,7 +40,6 @@ class MainListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         myPlaces = realm.objects(MyPlace.self)
         setupSearchBar()
     }
@@ -139,11 +141,16 @@ extension MainListVC: UITableViewDelegate, UITableViewDataSource {
         cell.nameOfplace.text = listOfPlaces.name
         cell.locationPlace.text = listOfPlaces.location
         cell.commentLabel.text = listOfPlaces.comment
+        cell.ratingLabel.text = "\(listOfPlaces.rating)"
         cell.imagePlace.image = UIImage(data: listOfPlaces.imageData!)
         cell.imagePlace.layer.cornerRadius = constants.heightForImages / 2
         cell.imagePlace.clipsToBounds = true
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

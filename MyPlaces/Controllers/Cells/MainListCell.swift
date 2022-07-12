@@ -14,5 +14,6 @@ class MainListCell: UITableViewCell {
     @IBOutlet var nameOfplace: UILabel!
     @IBOutlet var locationPlace: UILabel!
     @IBOutlet var commentLabel: UILabel!
-
+    @IBOutlet weak var ratingLabel: UILabel!
+    
 }

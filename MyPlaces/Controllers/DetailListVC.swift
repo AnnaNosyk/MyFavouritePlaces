@@ -17,13 +17,18 @@ class DetailListVC: UITableViewController {
     @IBOutlet weak var commentTextField: UITextField!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
+
     
-    var currentPlace: MyPlace?
+    @IBOutlet weak var ratingStars: RatingStars!
+    
+    
+    var currentPlace: MyPlace!
     var imageIsChanged = false
     let alert = Alert()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         nameTextField.delegate = self
         locationTextField.delegate = self
         commentTextField.delegate = self
@@ -56,7 +61,7 @@ class DetailListVC: UITableViewController {
         }
         let imageData = image?.pngData()
         
-        let newPlace = MyPlace(name: nameTextField.text!, location: locationTextField.text, comment: commentTextField.text, imageData: imageData)
+        let newPlace = MyPlace(name: nameTextField.text!, location: locationTextField.text, comment: commentTextField.text, imageData: imageData, rating: ratingStars.rating)
         
         //edit place
         if currentPlace != nil {
@@ -65,6 +70,7 @@ class DetailListVC: UITableViewController {
                 currentPlace?.location = newPlace.location
                 currentPlace?.comment = newPlace.comment
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             //save new place
@@ -85,6 +91,7 @@ class DetailListVC: UITableViewController {
             nameTextField.text = currentPlace?.name
             locationTextField.text = currentPlace?.location
             commentTextField.text = currentPlace?.comment
+            ratingStars.rating = currentPlace.rating
         }
     }
     
