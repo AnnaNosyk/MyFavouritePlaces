@@ -99,6 +99,7 @@ class DetailListVC: UITableViewController {
         
         let mapVC = segue.destination as! MapVC
         mapVC.place.name = nameTextField.text!
+        mapVC.place.location = locationTextField.text
         mapVC.place.comment = commentTextField.text
         mapVC.place.imageData = imageOfItem.image?.pngData()
     }

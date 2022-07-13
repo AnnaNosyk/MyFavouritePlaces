@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapVC: UIViewController {
     
@@ -14,12 +15,16 @@ class MapVC: UIViewController {
     
     var place = MyPlace()
     let annotationIdentifier = "annotationIdentifier"
+    let locationManager = CLLocationManager()
+    
+    private let alert = Alert()
+    private let constants = Constants()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       setupPlacemark()
         mapView.delegate = self
+        setupPlacemark()
+        checkUserLocation()
     }
     
     private func setupPlacemark() {
@@ -53,10 +58,71 @@ class MapVC: UIViewController {
         }
     }
     
+    
+    //cheking if location of user able or not
+    
+    private func checkUserLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.alert.showAlert(
+                    viewController: self, title: "Location Services are Disabled",
+                    message: "To enable it go: Settings -> Privacy -> Location Services and turn On"
+                )
+            }
+        }
+    }
+    
+    private func setupLocationManager() {
+        // location accuracy
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
 
+    private func checkLocationAuthorization() {
+        //status of autorization
+        switch locationManager.authorizationStatus {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            break
+        case .denied:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.alert.showAlert(
+                    viewController: self, title: "Your Location is not Available",
+                    message: "To give permission Go to: Setting -> MyPlaces -> Location"
+                )
+            }
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            break
+        case .authorizedAlways:
+            break
+        @unknown default:
+            print("New case is available")
+        }
+    }
+    
+    
+    
+
+    @IBAction func userLocationAction(_ sender: UIButton) {
+        // cheking user coordinate
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: constants.metersForLocation,
+                                            longitudinalMeters: constants.metersForLocation)
+            mapView.setRegion(region, animated: true)
+    }
+    
+    }
 
 }
 
+//MARK: - MKMapViewDelegate
 extension MapVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -70,20 +136,28 @@ extension MapVC: MKMapViewDelegate {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView?.canShowCallout = true
         }
+        //guard let imageData = place.imageData else {return nil}
         
-        
-        guard let imageData = place.imageData else {return nil}
-        
-      //  if let imageData = place.imageData {
+       if let imageData = place.imageData {
             
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             imageView.layer.cornerRadius = 10
             imageView.clipsToBounds = true
             imageView.image = UIImage(data: imageData)
         annotationView?.leftCalloutAccessoryView = imageView
-      //  }
+       }
         
         return annotationView
     }
 }
+
+//MARK: - CLLocationManagerDelegate
+extension MapVC: CLLocationManagerDelegate {
+
+    // for user location in real time
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
+}
+
 
