@@ -22,6 +22,7 @@ class DetailListVC: UITableViewController {
     @IBOutlet weak var ratingStars: RatingStars!
     
     
+    
     var currentPlace: MyPlace!
     var imageIsChanged = false
     let alert = Alert()
@@ -53,12 +54,9 @@ class DetailListVC: UITableViewController {
     
     // saving places
     func saveItem() {
-        var image: UIImage?
-        if imageIsChanged {
-            image = imageOfItem.image
-        } else {
-            image = UIImage(systemName: "building.2.crop.circle")
-        }
+        
+        let image = imageIsChanged ? imageOfItem.image : UIImage(systemName: "building.2.crop.circle")
+     
         let imageData = image?.pngData()
         
         let newPlace = MyPlace(name: nameTextField.text!, location: locationTextField.text, comment: commentTextField.text, imageData: imageData, rating: ratingStars.rating)
@@ -93,6 +91,16 @@ class DetailListVC: UITableViewController {
             commentTextField.text = currentPlace?.comment
             ratingStars.rating = currentPlace.rating
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier != "mapVCSegue" { return }
+        
+        let mapVC = segue.destination as! MapVC
+        mapVC.place.name = nameTextField.text!
+        mapVC.place.comment = commentTextField.text
+        mapVC.place.imageData = imageOfItem.image?.pngData()
     }
     
     

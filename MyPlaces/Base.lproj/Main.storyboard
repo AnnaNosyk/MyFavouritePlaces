@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -246,10 +247,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="skk-Mo-iMD">
-                                                    <rect key="frame" x="16" y="8" width="382" height="63"/>
+                                                    <rect key="frame" x="16" y="8" width="336" height="63"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlz-XA-3dX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="336" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="gLP-mu-Kv9"/>
                                                             </constraints>
@@ -258,17 +259,32 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the location..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-BR-R6C">
-                                                            <rect key="frame" x="0.0" y="28" width="382" height="35"/>
+                                                            <rect key="frame" x="0.0" y="28" width="336" height="35"/>
                                                             <color key="textColor" name="inputColorText"/>
                                                             <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" textContentType="location"/>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKb-fz-Lbz">
+                                                    <rect key="frame" x="368" y="37" width="30" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="I26-fy-tTd"/>
+                                                        <constraint firstAttribute="height" constant="30" id="s1r-w4-5E5"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map.circle.fill" catalog="system"/>
+                                                    <connections>
+                                                        <segue destination="fdC-XZ-zjr" kind="show" identifier="mapVCSegue" id="mfF-0v-tuQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="skk-Mo-iMD" firstAttribute="leading" secondItem="9CA-3R-das" secondAttribute="leading" constant="16" id="E0S-H2-jof"/>
-                                                <constraint firstAttribute="trailing" secondItem="skk-Mo-iMD" secondAttribute="trailing" constant="16" id="S6h-29-4e5"/>
+                                                <constraint firstItem="xKb-fz-Lbz" firstAttribute="leading" secondItem="skk-Mo-iMD" secondAttribute="trailing" constant="16" id="S6h-29-4e5"/>
+                                                <constraint firstAttribute="bottom" secondItem="xKb-fz-Lbz" secondAttribute="bottom" constant="7" id="SEl-BF-efM"/>
+                                                <constraint firstItem="xKb-fz-Lbz" firstAttribute="top" secondItem="9CA-3R-das" secondAttribute="top" constant="37" id="dR3-BD-ewM"/>
+                                                <constraint firstAttribute="trailing" secondItem="xKb-fz-Lbz" secondAttribute="trailing" constant="16" id="dqp-3g-4Eq"/>
                                                 <constraint firstAttribute="bottom" secondItem="skk-Mo-iMD" secondAttribute="bottom" constant="4" id="mYy-HE-1tD"/>
                                                 <constraint firstItem="skk-Mo-iMD" firstAttribute="top" secondItem="9CA-3R-das" secondAttribute="top" constant="8" id="yLt-oa-qo7"/>
                                             </constraints>
@@ -362,7 +378,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEp-pr-okk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="nQi-E8-BRn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="281"/>
+            <point key="canvasLocation" x="1053.6231884057972" y="280.58035714285711"/>
+        </scene>
+        <!--MapVC-->
+        <scene sceneID="XjQ-Yh-fFD">
+            <objects>
+                <viewController storyboardIdentifier="MapVC" id="fdC-XZ-zjr" customClass="MapVC" customModule="MyFavouritePlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EEo-qq-qmz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ps7-xq-ett">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PRy-tq-icB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ps7-xq-ett" firstAttribute="leading" secondItem="PRy-tq-icB" secondAttribute="leading" id="OFh-a2-PXY"/>
+                            <constraint firstItem="ps7-xq-ett" firstAttribute="trailing" secondItem="PRy-tq-icB" secondAttribute="trailing" id="cns-5a-oXN"/>
+                            <constraint firstAttribute="bottom" secondItem="ps7-xq-ett" secondAttribute="bottom" id="e03-oW-5WJ"/>
+                            <constraint firstItem="ps7-xq-ett" firstAttribute="top" secondItem="EEo-qq-qmz" secondAttribute="top" id="uR9-47-Xu0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DyZ-O1-FMc"/>
+                    <connections>
+                        <outlet property="mapView" destination="ps7-xq-ett" id="HYF-DO-z1p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jN9-ph-dPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2088.4057971014495" y="296.65178571428572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RGU-S5-LEW">
@@ -394,6 +440,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.square" catalog="system" width="128" height="114"/>
+        <image name="map.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.tip.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="background">
@@ -405,5 +452,8 @@
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
