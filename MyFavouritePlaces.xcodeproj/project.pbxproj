@@ -433,7 +433,9 @@
 				DEVELOPMENT_TEAM = N5R82RFL53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyFovouritePlaces;
+				INFOPLIST_KEY_CFBundleDisplayName = M.F.P.;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) photo use";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -463,7 +465,9 @@
 				DEVELOPMENT_TEAM = N5R82RFL53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyPlaces/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyFovouritePlaces;
+				INFOPLIST_KEY_CFBundleDisplayName = M.F.P.;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) photo use";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

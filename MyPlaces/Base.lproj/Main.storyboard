@@ -190,9 +190,19 @@
                                                     <rect key="frame" x="-1.5" y="0.0" width="415.5" height="249.5"/>
                                                     <color key="tintColor" name="inputColorText"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYl-lf-UOf">
+                                                    <rect key="frame" x="334" y="210" width="72" height="31"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="filled" title="on map"/>
+                                                    <connections>
+                                                        <segue destination="fdC-XZ-zjr" kind="show" identifier="onMapSegue" id="Bya-C5-wDS"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="VYl-lf-UOf" secondAttribute="bottom" constant="9" id="PvK-2p-sol"/>
+                                                <constraint firstAttribute="trailing" secondItem="VYl-lf-UOf" secondAttribute="trailing" constant="8" id="TY3-vU-ryd"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ncz-zr-Z96" secondAttribute="bottom" id="aJy-sG-Mbi"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ncz-zr-Z96" secondAttribute="trailing" id="eB3-rG-VPj"/>
                                                 <constraint firstItem="Ncz-zr-Z96" firstAttribute="top" secondItem="34N-4Z-OCF" secondAttribute="top" id="tz8-ix-e0T"/>
@@ -275,7 +285,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="map.circle.fill" catalog="system"/>
                                                     <connections>
-                                                        <segue destination="fdC-XZ-zjr" kind="show" identifier="mapVCSegue" id="mfF-0v-tuQ"/>
+                                                        <segue destination="fdC-XZ-zjr" kind="show" identifier="getFromMapSegue" id="mfF-0v-tuQ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -403,20 +413,51 @@
                                     <action selector="userLocationAction:" destination="fdC-XZ-zjr" eventType="touchUpInside" id="f72-gW-k1x"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="myk-ko-g3H">
+                                <rect key="frame" x="187" y="427.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZPX-x4-ecp"/>
+                                    <constraint firstAttribute="width" constant="40" id="hxN-2C-5Mb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iGX-9M-DnZ">
+                                <rect key="frame" x="20" y="121" width="374" height="35"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0I-Ug-d8I">
+                                <rect key="frame" x="177.5" y="791" width="59" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonAction:" destination="fdC-XZ-zjr" eventType="touchUpInside" id="SQ9-fR-l1l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PRy-tq-icB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PRy-tq-icB" firstAttribute="bottom" secondItem="O0I-Ug-d8I" secondAttribute="bottom" constant="40" id="25w-oZ-9u7"/>
                             <constraint firstItem="PRy-tq-icB" firstAttribute="bottom" secondItem="bee-wW-1zU" secondAttribute="bottom" constant="40" id="Ems-NE-eHY"/>
                             <constraint firstItem="ps7-xq-ett" firstAttribute="leading" secondItem="PRy-tq-icB" secondAttribute="leading" id="OFh-a2-PXY"/>
                             <constraint firstItem="PRy-tq-icB" firstAttribute="trailing" secondItem="bee-wW-1zU" secondAttribute="trailing" constant="40" id="Vjy-mI-anh"/>
                             <constraint firstItem="ps7-xq-ett" firstAttribute="trailing" secondItem="PRy-tq-icB" secondAttribute="trailing" id="cns-5a-oXN"/>
                             <constraint firstAttribute="bottom" secondItem="ps7-xq-ett" secondAttribute="bottom" id="e03-oW-5WJ"/>
+                            <constraint firstItem="PRy-tq-icB" firstAttribute="trailing" secondItem="iGX-9M-DnZ" secondAttribute="trailing" constant="20" id="fIh-d9-7Fr"/>
+                            <constraint firstItem="iGX-9M-DnZ" firstAttribute="top" secondItem="PRy-tq-icB" secondAttribute="top" constant="33" id="fR9-GX-TB7"/>
                             <constraint firstItem="ps7-xq-ett" firstAttribute="top" secondItem="EEo-qq-qmz" secondAttribute="top" id="uR9-47-Xu0"/>
+                            <constraint firstItem="O0I-Ug-d8I" firstAttribute="centerX" secondItem="EEo-qq-qmz" secondAttribute="centerX" id="uWo-zW-4Cd"/>
+                            <constraint firstItem="iGX-9M-DnZ" firstAttribute="leading" secondItem="PRy-tq-icB" secondAttribute="leading" constant="20" id="y06-8r-zvb"/>
+                            <constraint firstItem="myk-ko-g3H" firstAttribute="centerY" secondItem="EEo-qq-qmz" secondAttribute="centerY" id="y30-tu-Y0w"/>
+                            <constraint firstItem="myk-ko-g3H" firstAttribute="centerX" secondItem="EEo-qq-qmz" secondAttribute="centerX" id="yFz-cL-jQD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DyZ-O1-FMc"/>
                     <connections>
+                        <outlet property="adressLabel" destination="iGX-9M-DnZ" id="9AO-gK-sKj"/>
+                        <outlet property="doneButton" destination="O0I-Ug-d8I" id="zm4-E7-r3A"/>
+                        <outlet property="mapPin" destination="myk-ko-g3H" id="PaK-Bg-C7J"/>
                         <outlet property="mapView" destination="ps7-xq-ett" id="HYF-DO-z1p"/>
                     </connections>
                 </viewController>
@@ -450,12 +491,14 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="Bya-C5-wDS"/>
         <segue reference="ith-rb-ELn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.square" catalog="system" width="128" height="114"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="mappin" catalog="system" width="105" height="128"/>
         <image name="pencil.tip.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="background">

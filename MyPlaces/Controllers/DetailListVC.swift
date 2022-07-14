@@ -94,15 +94,24 @@ class DetailListVC: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //chekc segue identifier for the correct map view
+        guard
+            let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapVC
+            else { return }
         
-        if segue.identifier != "mapVCSegue" { return }
+        mapVC.segueIdentifier = identifier
+        mapVC.mapVCDelegate = self
         
-        let mapVC = segue.destination as! MapVC
-        mapVC.place.name = nameTextField.text!
-        mapVC.place.location = locationTextField.text
-        mapVC.place.comment = commentTextField.text
-        mapVC.place.imageData = imageOfItem.image?.pngData()
-    }
+        if identifier == "onMapSegue" {
+            mapVC.place.name = nameTextField.text!
+            mapVC.place.location = locationTextField.text
+            mapVC.place.comment = commentTextField.text
+            mapVC.place.imageData = imageOfItem.image?.pngData()
+        }
+        }
+       
+        
     
     
 // MARK:-  Table view delegate
@@ -170,5 +179,14 @@ extension DetailListVC: UIImagePickerControllerDelegate, UINavigationControllerD
         imageIsChanged = true
         dismiss(animated: true)
     }
+}
+
+// MARK: - MapVCDelegate
+extension DetailListVC: MapVCDelegate {
+    func getAddress(_ address: String?) {
+        locationTextField.text = address
+    }
+    
+    
 }
 
