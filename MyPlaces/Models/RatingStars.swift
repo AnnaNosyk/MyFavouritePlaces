@@ -71,8 +71,8 @@ import UIKit
         
         // Load button image
         
-        let emptyStar = UIImage(systemName: "star")
-        let filledStar = UIImage(systemName: "star.fill")
+        let emptyStar = UIImage(systemName: Constants().emptyStarRating)
+        let filledStar = UIImage(systemName: Constants().fullStarRating)
     
         for _ in 0..<starsCount {
             

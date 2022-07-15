@@ -10,22 +10,18 @@ import UIKit
 class DetailListVC: UITableViewController {
     
     @IBOutlet weak var imageOfItem: UIImageView!
-    
     @IBOutlet weak var nameTextField: UITextField!
-   
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var commentTextField: UITextField!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-
-    
     @IBOutlet weak var ratingStars: RatingStars!
     
     
     
     var currentPlace: MyPlace!
     var imageIsChanged = false
-    let alert = Alert()
+    private  let alert = Alert()
+    private let constants = Constants()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +51,7 @@ class DetailListVC: UITableViewController {
     // saving places
     func saveItem() {
         
-        let image = imageIsChanged ? imageOfItem.image : UIImage(systemName: "building.2.crop.circle")
+        let image = imageIsChanged ? imageOfItem.image : UIImage(systemName: constants.temporaryImageOfItem)
      
         let imageData = image?.pngData()
         
@@ -103,7 +99,7 @@ class DetailListVC: UITableViewController {
         mapVC.segueIdentifier = identifier
         mapVC.mapVCDelegate = self
         
-        if identifier == "onMapSegue" {
+        if identifier == constants.showPlaceLocationSegue {
             mapVC.place.name = nameTextField.text!
             mapVC.place.location = locationTextField.text
             mapVC.place.comment = commentTextField.text

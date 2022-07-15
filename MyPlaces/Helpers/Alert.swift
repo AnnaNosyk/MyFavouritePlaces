@@ -8,23 +8,25 @@
 import UIKit
 
 class Alert {
+    private let constants = Constants()
+    
     func alert(viewController: UIViewController, cameraComplitionHandler:@escaping (UIAlertAction)->Void, galleryComplitionHandler:@escaping (UIAlertAction)->Void) {
-        let cameraIcon = UIImage(systemName: "camera")
-        let galleryIcon = UIImage(systemName: "photo")
+        let cameraIcon = UIImage(systemName: constants.cameraImage)
+        let galleryIcon = UIImage(systemName: constants.galleryImage)
         let alert = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
-        let camera = UIAlertAction(title: "Camera", style: .default, handler: cameraComplitionHandler)
-        camera.setValue(cameraIcon, forKey: "image")
-        camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        let camera = UIAlertAction(title: constants.cameraStr, style: .default, handler: cameraComplitionHandler)
+        camera.setValue(cameraIcon, forKey: constants.alertImageKey)
+        camera.setValue(CATextLayerAlignmentMode.left, forKey: constants.alertTitleKey)
     
         
-        let gallery = UIAlertAction(title: "Gallery", style: .default, handler: galleryComplitionHandler)
-        gallery.setValue(galleryIcon, forKey: "image")
-        gallery.setValue(CATextLayerAlignmentMode.right, forKey: "titleTextAlignment")
+        let gallery = UIAlertAction(title: constants.gakkeryStr, style: .default, handler: galleryComplitionHandler)
+        gallery.setValue(galleryIcon, forKey: constants.alertImageKey)
+        gallery.setValue(CATextLayerAlignmentMode.right, forKey: constants.alertTitleKey)
     
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: constants.cancelStr, style: .cancel)
         
         alert.addAction(camera)
         alert.addAction(gallery)
@@ -32,14 +34,4 @@ class Alert {
         
         viewController.present(alert, animated: true)
     }
-    
-    func showAlert(viewController: UIViewController, title: String, message: String) {
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        
-        alert.addAction(okAction)
-        viewController.present(alert, animated: true)
-    }
-
 }

@@ -56,10 +56,10 @@ class MainListVC: UIViewController {
     private func sorting() {
         //sorting data by date
         if segmentedControl.selectedSegmentIndex == 0 {
-            myPlaces = myPlaces.sorted(byKeyPath: "date", ascending: ascendingSorting)
+            myPlaces = myPlaces.sorted(byKeyPath: constants.keyPathDate, ascending: ascendingSorting)
         } else {
             //sorting data by name
-            myPlaces = myPlaces.sorted(byKeyPath: "name", ascending: ascendingSorting)
+            myPlaces = myPlaces.sorted(byKeyPath: constants.keyPathName, ascending: ascendingSorting)
         }
         
         tableView.reloadData()
@@ -74,9 +74,9 @@ class MainListVC: UIViewController {
         ascendingSorting.toggle()
         
         if ascendingSorting {
-            sortingButton.image = UIImage(systemName: "arrow.down.square")
+            sortingButton.image = UIImage(systemName: constants.sortDownImage)
         } else {
-            sortingButton.image = UIImage(systemName: "arrow.up.square")
+            sortingButton.image = UIImage(systemName: constants.sortUpImage)
         }
         
         sorting()
@@ -92,7 +92,7 @@ class MainListVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditSegue" {
+        if segue.identifier == constants.showEditScreenSegue {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let place: MyPlace
             if isFiltering {
