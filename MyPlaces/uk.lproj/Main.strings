@@ -1,0 +1,78 @@
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "4VR-2P-SVX"; */
+"4VR-2P-SVX.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "My new place"; ObjectID = "C51-NX-gOu"; */
+"C51-NX-gOu.title" = "Моє нове місце";
+
+/* Class = "UILabel"; text = "Direction options"; ObjectID = "EEd-NN-dcw"; */
+"EEd-NN-dcw.text" = "Варіанти напрямків";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "F8E-YD-bBy"; */
+"F8E-YD-bBy.text" = "Місцезнаходження";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "Mlz-XA-3dX"; */
+"Mlz-XA-3dX.text" = "Місцезнаходження";
+
+/* Class = "UIButton"; configuration.title = "Done"; ObjectID = "O0I-Ug-d8I"; */
+"O0I-Ug-d8I.configuration.title" = "Готово";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "O0I-Ug-d8I"; */
+"O0I-Ug-d8I.normalTitle" = "Кнопка";
+
+/* Class = "UINavigationItem"; title = "My favourite places"; ObjectID = "Pd4-i7-ZVa"; */
+"Pd4-i7-ZVa.title" = "Мої улюблені місця";
+
+/* Class = "UIButton"; configuration.title = "on map"; ObjectID = "VYl-lf-UOf"; */
+"VYl-lf-UOf.configuration.title" = "на карті";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VYl-lf-UOf"; */
+"VYl-lf-UOf.normalTitle" = "Кнопка";
+
+/* Class = "UIButton"; configuration.title = "Get direction"; ObjectID = "W55-v7-4XF"; */
+"W55-v7-4XF.configuration.title" = "Отримати напрямок";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "W55-v7-4XF"; */
+"W55-v7-4XF.normalTitle" = "Кнопка";
+
+/* Class = "UITextField"; placeholder = "Enter the location..."; ObjectID = "Zmg-BR-R6C"; */
+"Zmg-BR-R6C.placeholder" = "Введіть місцезнаходження...";
+
+/* Class = "UIButton"; configuration.title = " "; ObjectID = "bee-wW-1zU"; */
+"bee-wW-1zU.configuration.title" = " ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bee-wW-1zU"; */
+"bee-wW-1zU.normalTitle" = "Кнопка";
+
+/* Class = "UITextField"; placeholder = "Enter the comment..."; ObjectID = "dfc-6r-myY"; */
+"dfc-6r-myY.placeholder" = "Введіть коментар...";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "dl4-FX-XLR"; */
+"dl4-FX-XLR.text" = "Назва";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "dwk-Mp-qps"; */
+"dwk-Mp-qps.text" = "Коментар";
+
+/* Class = "UISegmentedControl"; fr5-HO-oqj.segmentTitles[0] = "Date"; ObjectID = "fr5-HO-oqj"; */
+"fr5-HO-oqj.segmentTitles[0]" = "Дата";
+
+/* Class = "UISegmentedControl"; fr5-HO-oqj.segmentTitles[1] = "Name"; ObjectID = "fr5-HO-oqj"; */
+"fr5-HO-oqj.segmentTitles[1]" = "Назва";
+
+/* Class = "UILabel"; text = "Adress"; ObjectID = "iGX-9M-DnZ"; */
+"iGX-9M-DnZ.text" = "Адреса";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "k15-nA-erx"; */
+"k15-nA-erx.text" = "Назва";
+
+/* Class = "UILabel"; text = "Comment"; ObjectID = "kEO-ra-mIw"; */
+"kEO-ra-mIw.text" = "Коментар";
+
+/* Class = "UITextField"; placeholder = "Enter the name..."; ObjectID = "n8c-5O-scB"; */
+"n8c-5O-scB.placeholder" = "Введіть назву...";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "q94-2l-xKM"; */
+"q94-2l-xKM.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xKb-fz-Lbz"; */
+"xKb-fz-Lbz.normalTitle" = "Кнопка";

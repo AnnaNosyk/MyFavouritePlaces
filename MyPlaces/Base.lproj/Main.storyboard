@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7c2-gJ-KkV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92.753623188405811" y="208.92857142857142"/>
+            <point key="canvasLocation" x="209" y="209"/>
         </scene>
         <!--My new place-->
         <scene sceneID="TVz-eB-q4c">
@@ -388,7 +388,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EEp-pr-okk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="nQi-E8-BRn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1053.6231884057972" y="280.58035714285711"/>
+            <point key="canvasLocation" x="1032" y="209"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="XjQ-Yh-fFD">
@@ -487,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jN9-ph-dPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2088.4057971014495" y="296.65178571428572"/>
+            <point key="canvasLocation" x="1948" y="209"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RGU-S5-LEW">
@@ -506,7 +506,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6b-Jf-3yq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="-423"/>
+            <point key="canvasLocation" x="1032" y="-492"/>
         </scene>
     </scenes>
     <designables>
@@ -516,7 +516,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="mfF-0v-tuQ"/>
-        <segue reference="ith-rb-ELn"/>
+        <segue reference="k3Y-ze-04o"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down.square" catalog="system" width="128" height="114"/>

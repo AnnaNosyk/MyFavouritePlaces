@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  MyFavouritePlaces
+  Created by Anna Nosyk on 17/07/2022.
+*/
+"Error" = "Błąd";
+"Ok" = "Ok";
+"Camera" = "Kamera";
+"Gallery" = "Galeria";
+"Cancel" = "Anulować";
+"Location Services are Disabled" = "Usługi lokalizacyjne są wyłączone";
+"To enable it go: Settings -> Privacy -> Location Services and turn On" = "Aby go włączyć, przejdź: Ustawienia -> Prywatność -> Usługi lokalizacyjne i włącz";
+"Your Location is not Available" = "Twoja lokalizacja jest niedostępna";
+"To give permission Go to: Setting -> MyPlaces -> Location" = "Aby udzielić pozwolenia Przejdź do: Ustawienia -> MyPlaces -> Lokalizacja";
+"Current location is not found" = "Nie znaleziono bieżącej lokalizacji";
+"Destination is not found" = "Nie znaleziono miejsca docelowego";
+"Directions is not available" = "Trasa nie są dostępne";
+"Distance to place: " = "Odległość do miejsca:";
+"Travel time will be: " = "Czas podróży będzie";
+"km." = "km.";
+"min." = "min.";

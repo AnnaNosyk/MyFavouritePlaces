@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  MyFavouritePlaces
+
+  Created by Anna Nosyk on 17/07/2022.
+  
+*/
+"Error" = "Помилка";
+"Ok" = "Добре";
+"Camera" = "Камера";
+"Gallery" = "Галерея";
+"Cancel" = "Скасувати";
+"Location Services are Disabled" = "Служби локації вимкнено";
+"To enable it go: Settings -> Privacy -> Location Services and turn On" = "Щоб увімкнути його, перейдіть: Налаштування -> Конфіденційність -> Служби визначення місцезнаходження та ввімкніть";
+"Your Location is not Available" = "Ваше місцезнаходження недоступне";
+"To give permission Go to: Setting -> MyPlaces -> Location" = "Щоб надати дозвіл, перейдіть до: Налаштування -> Мої місця -> Розташування";
+"Current location is not found" = "Поточне місцезнаходження не знайдено";
+"Destination is not found" = "Пункт призначення не знайдено";
+"Directions is not available" = "Маршрути недоступні";
+"Distance to place: " = "Відстань до місця";
+"Travel time will be: " = "Час у дорозі буде";
+"km." = "км.";
+"min." = "min.";
